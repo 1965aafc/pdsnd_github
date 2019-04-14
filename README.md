@@ -19,3 +19,6 @@ wasington.csv
 ### Credits
 Made for Alvaro Fuentes (1965aafc@gmail.com).
 Inspired by https://github.com/udacity/pdsnd_github.
+
+### Updates
+Updated on 14-Apr-2019.
