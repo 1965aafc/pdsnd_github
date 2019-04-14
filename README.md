@@ -1,15 +1,18 @@
 ### Date created
-Include the date you created this project and README file.
+Created on 14-Apr-2019.
 
 ### Project Title
-Replace the Project Title
+Bikeshare statistics.
 
 ### Description
-Describe what your project is about and what it does
+Analizes statistics and review raw data with Python from bikeshare in three US´cities: Chicago, New York City and Washington.
 
 ### Files used
-Include the files used
+bikeshare.py
+chicago.csv
+new_york_city.csv
+wasington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Made for Alvaro Fuentes (1965aafc@gmail.com).
+Inspired by https://github.com/udacity/pdsnd_github.
