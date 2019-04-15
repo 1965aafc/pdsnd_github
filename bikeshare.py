@@ -15,33 +15,31 @@ print('Specify a city, month and day separated by commas')
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    print('Specify a city, month and day separated by commas')
+    print('Hello! Let\'s explore some US bikeshare data! \n Specify a city, month and day separated by commas')
 
     cities = ['chicago', 'new york city', 'washington']
     months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
     days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('Specify a city: ').lower() 
+    city = input('Specify a city: ').lower()
     while city not in cities:
-        print('city is not in our database. You can select between {chicago, new york city or washington')
-        city = input('Specify a city: ').lower() 
-    
-    
+        city = input('city is not in our database. You can select between {chicago, new york city or washington.\n Specify a city: ').lower()
+
+
     # get user input for month (all, january, february, ... , june)
-    month = input('Specify a month. Use all to apply no filter: ').lower() 
+    month = input('Specify a month. Use all to apply no filter: ').lower()
     while month not in months:
         print('month is not in our database. You can choose from january to june')
-        month = input('Specify a month. Use all to apply no filter: ').lower() 
+        month = input('Specify a month. Use all to apply no filter: ').lower()
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input('Specify a day of week. Use ''all'' to apply no filter: ').lower() 
+    day = input('Specify a day of week. Use ''all'' to apply no filter: ').lower()
     while day not in days:
         print('You have to write the complete name, lowercase. Please retry')
-        day = input('Specify a day of week. Use ''all'' to apply no filter: ').lower() 
-  
-    print('/n Your filter selection was: ', city, ', month: ', month, ', day: ', day)      
+        day = input('Specify a day of week. Use ''all'' to apply no filter: ').lower()
+
+    print('/n Your filter selection was: ', city, ', month: ', month, ', day: ', day)
     print('-'*40)
     return city, month, day
 
@@ -62,7 +60,7 @@ def load_data(city, month, day):
     if city == 'washington':
         df['Gender'] = 'NaN'
         df['Birth Year'] = 'NaN'
-        
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -83,7 +81,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
@@ -95,16 +93,16 @@ def time_stats(df):
 
     # display the most common month
     df['month'] = df['Start Time'].dt.month
-    popular_month = df['month'].mode()[0]      
+    popular_month = df['month'].mode()[0]
     print('Most Frequent Month:', popular_month)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)    
+    print('-'*40)
 
 
     # display the most common day of week
     df['weekday'] = df['Start Time'].dt.weekday_name
-    popular_day = df['weekday'].mode()[0]      
+    popular_day = df['weekday'].mode()[0]
     print('Most Frequent Day:', popular_day)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -112,7 +110,7 @@ def time_stats(df):
 
     # display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
-    popular_hour = df['hour'].mode()[0]      
+    popular_hour = df['hour'].mode()[0]
     print('Most Frequent Start Hour:', popular_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -126,11 +124,11 @@ def station_stats(df):
     start_time = time.time()
 
     # display most commonly used start station
-    popular_start = df['Start Station'].mode()[0]      
+    popular_start = df['Start Station'].mode()[0]
     print('Most Commonly Used Start Station:', popular_start)
 
     # display most commonly used end station
-    popular_end = df['End Station'].mode()[0]      
+    popular_end = df['End Station'].mode()[0]
     print('Most Commonly Used End Station:', popular_end)
 
     # display most frequent combination of start station and end station trip
@@ -152,13 +150,13 @@ def trip_duration_stats(df):
     df['End Time'] = pd.to_datetime(df['End Time'])
 
     total_time = (df['End Time'] - df['Start Time']).sum()
-    
+
     print('Total Travel Time:', total_time)
 
     # display mean travel time
 
     mean_time = (df['End Time'] - df['Start Time']).mean()
-    
+
     print('Mean Travel Time:', mean_time)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -170,29 +168,29 @@ def user_stats(df):
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
-   
+
     # Display counts of user types
 
-    user_types = pd.value_counts(df['User Type']) 
+    user_types = pd.value_counts(df['User Type'])
     print(user_types)
 
     # Display counts of gender
-        
-    gender = pd.value_counts(df['Gender']) 
+
+    gender = pd.value_counts(df['Gender'])
     print(gender)
 
     # Display earliest, most recent, and most common year of birth
 
         # extract month and day of week from Start Time to create new columns
     df['month'] = df['Birth Year']
-  
+
     common_year = df['month'].mode()
     print('\nMost Frequent User Birth Year:', common_year)
-   
-    latest_year = df['month'].max()     
+
+    latest_year = df['month'].max()
     print('\nMost Recent User Birth Year:', latest_year)
 
-    earliest_year = df['month'].min()     
+    earliest_year = df['month'].min()
     print('\nMost Earlier User Birth Year:', earliest_year)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -219,8 +217,8 @@ def main():
             more_data = input('Would you like to see the next 5 lines? Enter yes or no: ').lower()
             if more_data != 'yes':
                 break
-                  
- 
+
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
